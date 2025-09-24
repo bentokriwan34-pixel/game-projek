@@ -12,7 +12,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->alias([
+            'password.auth' => \App\Http\Middleware\PasswordAuth::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
